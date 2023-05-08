@@ -16,6 +16,7 @@ local page = venyx:addPage("Fishing")
 local section1 = page:addSection("Player")
 local section2 = page:addSection("Boat")
 local section3 = page:addSection("Sell")
+local section4 = page:addSection("ESP")
 
 local super
 section1:addToggle("Super Human", nil, function(value)
@@ -55,6 +56,22 @@ section3:addToggle("Auto Sell", nil, function(value)
     end
 end)
 
+section4:addButton("Sea Creature ESP", function()
+    for i, v in pairs(game.Workspace:GetChildren()) do
+        if v:FindFirstChild("Health") and v:FindFirstChild("IsSeaMonster") then
+            local x = Instance.new('BillboardGui', v.HumanoidRootPart)
+            x.AlwaysOnTop = true
+            x.Size = UDim2.new(5, 0, 5, 0)
+            local label = Instance.new("TextLabel", x)
+            label.TextColor3 = Color3.fromRGB(0,0,0)
+            label.BorderSizePixel = 0
+            label.BackgroundTransparency = 1
+            label.TextScaled = true
+            label.Text = v.Name
+            label.Size = UDim2.new(15, 0, 9, 0)
+        end
+    end
+end)
 
 --second page
 local page2 = venyx:addPage("Buy")
