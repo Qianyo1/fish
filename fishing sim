@@ -119,10 +119,8 @@ local page3 = venyx:addPage("Teleport")
 local section1 = page3:addSection("Teleport")
 local section2 = page3:addSection("Chest")
 
-local random
-section2:addToggle("Teleport to Random Chest", nil, function(value)
-    random = value
-    while random do
+
+section2:addButton("Teleport to Random Chest", function()
             for i, v in pairs(game.Workspace.RandomChests:GetDescendants()) do
                 if v:IsA("Model") and string.match(v.Name, "Chest") then
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
@@ -131,7 +129,6 @@ section2:addToggle("Teleport to Random Chest", nil, function(value)
                     wait()
                 end
             end
-        end
 end)
 
 section2:addButton("Teleport to Sunken Chest", function()
